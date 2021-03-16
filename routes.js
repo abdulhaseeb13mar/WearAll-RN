@@ -5,12 +5,12 @@ import {
 } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Navigator from './WaComp/RefNavigation';
-import SsHome from './WaSrc/SsHome';
-import SsSP from './WaSrc/WaSP';
-import SsCart from './WaSrc/WaCart';
-import SsContact from './WaSrc/WaContact';
-import SsSearch from './WaSrc/WaSearch';
-import SsConfirmOrder from './WaSrc/WaConfirmOrder';
+import WaHome from './WaSrc/WaHome';
+// import WaSP from './WaSrc/WaSP';
+// import WaCart from './WaSrc/WaCart';
+// import WaContact from './WaSrc/WaContact';
+// import WaSearch from './WaSrc/WaSearch';
+// import WaConfirmOrder from './WaSrc/WaConfirmOrder';
 const Stack = createStackNavigator();
 
 function Routes(props) {
@@ -20,17 +20,17 @@ function Routes(props) {
         Navigator.InitializeRefNavigation(ref);
       }}>
       <Stack.Navigator
-        initialRouteName="SsHome"
+        initialRouteName="WaHome"
         screenOptions={{
           headerShown: false,
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
-        <Stack.Screen name="SsHome" component={SsHome} />
-        <Stack.Screen name="SsSP" component={SsSP} />
-        <Stack.Screen name="SsCart" component={SsCart} />
-        <Stack.Screen name="SsSearch" component={SsSearch} />
-        <Stack.Screen name="SsContact" component={SsContact} />
-        <Stack.Screen name="SsConfirmOrder" component={SsConfirmOrder} />
+        <Stack.Screen name="WaHome" component={WaHome} />
+        {/* <Stack.Screen name="WaSP" component={WaSP} /> */}
+        {/* <Stack.Screen name="WaCart" component={WaCart} /> */}
+        {/* <Stack.Screen name="WaSearch" component={WaSearch} /> */}
+        {/* <Stack.Screen name="WaContact" component={WaContact} /> */}
+        {/* <Stack.Screen name="WaConfirmOrder" component={WaConfirmOrder} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

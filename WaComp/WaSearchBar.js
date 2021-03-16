@@ -16,12 +16,12 @@ export default function SearchBar({editable, changeSearchText}) {
   const onChangeText = t => changeSearchText(t);
 
   return (
-    <View style={{...styles.SB_Wrapper, height: HEIGHT * 0.06}}>
+    <View style={{...styles.SB_Wrapper, height: HEIGHT * 0.065}}>
       <TextInput
         style={styles.SB_input}
         placeholderTextColor={colors.lightGrey3}
         editable={editable}
-        placeholder="Search Candies here..."
+        placeholder="Search"
         onBlur={() => ChangeFocus(false)}
         onFocus={() => ChangeFocus(true)}
         onChangeText={onChangeText}
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 50,
+    borderRadius: 5,
     width: '100%',
     paddingHorizontal: 10,
     elevation: 2,

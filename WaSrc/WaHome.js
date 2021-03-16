@@ -11,7 +11,7 @@ import {
 import WrapperScreen from '../WaComp/WrapperScreen';
 import {colors} from '../WaComp/WaColor';
 import {H_W} from '../WaComp/WaDim';
-import Data from '../WaData';
+import Data from '../WAData';
 import Loop from '../WaComp/WaFlatList';
 import RefNavigation from '../WaComp/RefNavigation';
 import {connect} from 'react-redux';
@@ -22,21 +22,26 @@ import {
   WasetFavAction,
 } from '../WaRedux/WaActions';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {Avatar, Badge} from 'react-native-elements';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Avatar, Badge, Button} from 'react-native-elements';
 import WaSearchBar from '../WaComp/WaSearchBar';
-import dp from '../WaPhotos/dp.jpg';
+import Header from '../WaComp/WaHeader';
+import DP from '../WaPhotos/w29.png';
 
 function WaHome(props) {
   useEffect(() => {
-    changeTab(Data.category[0]);
+    WaChangeTab(Data.category[0]);
   }, []);
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
-  const [categories, setCategories] = useState(Data.category);
-  const [currentCat, setCurrentCat] = useState(Data.category[0]);
-  const [tabProducts, setTabProducts] = useState([]);
 
-  const changeTab = tab => {
+  const [WaCategories, setCategories] = useState(Data.category);
+  const [WaCurrentCat, setCurrentCat] = useState(Data.category[0]);
+  const [WaTabProducts, setTabProducts] = useState([]);
+
+  const WaChangeTab = tab => {
     setCurrentCat(tab);
     const filteredProducts = Data.product.filter(
       item => item.categoryId === tab.id,
@@ -44,90 +49,68 @@ function WaHome(props) {
     setTabProducts(filteredProducts);
   };
 
-  const WaGotoCart = () => RefNavigation.Navigate('WaCart');
-  const WaGotoSearch = () => RefNavigation.Navigate('WaSearch');
-  const WaGoToSingleProduct = item => {
-    props.WasetCurrentProductAction(item);
-    RefNavigation.Navigate('WaSP');
-  };
+  // const WaGotoCart = () => RefNavigation.Navigate('WaCart');
+  // const WaGotoSearch = () => RefNavigation.Navigate('WaSearch');
+  // const WaGoToSingleProduct = item => {
+  //   props.WasetCurrentProductAction(item);
+  //   RefNavigation.Navigate('WaSP');
+  // };
   return (
-    <WrapperScreen
-      style={{backgroundColor: `rgba(${colors.rgb_Primary}, 0.15)`}}>
+    <WrapperScreen style={{backgroundColor: colors.lightGrey4}}>
       <ScrollView>
+        <Header
+          leftIcon={AntDesign}
+          rightIcon={Ionicons}
+          rightIconColor="black"
+          leftIconColor="black"
+          leftIconName="hearto"
+          rightIconName="ios-cart-outline"
+          // leftIconAction=
+          Title={
+            <Text>
+              Wear<Text style={{color: 'black'}}>All</Text>
+            </Text>
+          }
+        />
         <View
           style={{
             alignItems: 'center',
-            justifyContent: 'space-between',
-            marginTop: HEIGHT * 0.02,
-            marginBottom: HEIGHT * 0.05,
-            paddingHorizontal: H_W.width * 0.05,
-            flexDirection: 'row',
+            justifyContent: 'center',
+            marginVertical: HEIGHT * 0.03,
           }}>
-          <TouchableOpacity
-            onPreWa={WaGotoSearch}
-            style={{width: H_W.width * 0.65}}>
+          <View style={{width: '90%'}}>
             <WaSearchBar editable={false} />
-          </TouchableOpacity>
-          <TouchableOpacity onPreWa={WaGotoCart} style={{padding: 4}}>
-            <MaterialIcons
-              name="shopping-bag"
-              size={H_W.width * 0.1}
-              color={colors.primary}
-            />
-            {props.WatotalItems > 0 && (
-              <Badge
-                value={props.WatotalItems}
-                containerStyle={styles.badgeContainer}
-                badgeStyle={{
-                  backgroundColor: colors.secondary,
-                }}
-              />
-            )}
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingHorizontal: H_W.width * 0.07,
-            marginBottom: HEIGHT * 0.03,
-          }}>
-          <View>
-            <Text
-              style={{fontWeight: 'bold', color: colors.primary, fontSize: 23}}>
-              Victoria Topsy
-            </Text>
-            <Text
-              style={{
-                color: colors.primary,
-                fontSize: 14,
-                marginTop: HEIGHT * 0.005,
-              }}>
-              Away Last 15 min
-            </Text>
           </View>
-          <Avatar rounded size={H_W.width * 0.15} source={dp} />
         </View>
         <View style={{marginBottom: HEIGHT * 0.03}}>
           <Loop
-            data={categories}
+            data={WaCategories}
             renderItem={({item}) => (
-              <TabList
+              <WaTabs
                 item={item}
-                currentCat={currentCat}
-                changeTab={changeTab}
+                WaCurrentCat={WaCurrentCat}
+                WaChangeTab={WaChangeTab}
               />
             )}
           />
         </View>
-        <View style={{}}>
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: 25,
+            marginLeft: H_W.width * 0.05,
+            marginBottom: HEIGHT * 0.02,
+          }}>
+          Featured Products
+        </Text>
+        <View style={{marginBottom: HEIGHT * 0.03}}>
           <Loop
-            data={tabProducts}
+            data={Data.featuredProducts}
             renderItem={({item}) => (
               <ProductList
                 item={item}
-                WaGoToSingleProduct={WaGoToSingleProduct}
+                WaCurrentCat={WaCurrentCat}
+                WaChangeTab={WaChangeTab}
               />
             )}
           />
@@ -142,19 +125,12 @@ export const ProductList = ({item, WaGoToSingleProduct}) => {
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
     <TouchableOpacity onPreWa={() => WaGoToSingleProduct(item)}>
-      <ImageBackground
-        source={item.images}
-        resizeMode="contain"
-        imageStyle={{borderRadius: 30}}
+      <View
         style={{
-          width: H_W.width * 0.7,
-          height: HEIGHT * 0.6,
-          backgroundColor: colors.secondary,
-          borderRadius: 30,
-          marginHorizontal: H_W.width * 0.05,
-          position: 'relative',
-          overflow: 'hidden',
-          elevation: 5,
+          width: H_W.width * 0.45,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'white',
           shadowColor: '#000',
           shadowOffset: {
             width: 0,
@@ -162,45 +138,133 @@ export const ProductList = ({item, WaGoToSingleProduct}) => {
           },
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
+          borderRadius: 16,
+          marginHorizontal: H_W.width * 0.05,
         }}>
+        <ImageBackground
+          source={item.images}
+          style={{width: '100%', height: HEIGHT * 0.2, borderRadius: 16}}
+          imageStyle={{borderRadius: 16}}
+          resizeMode="contain"
+        />
         <View
           style={{
-            width: 80,
-            height: 80,
+            width: '100%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingVertical: HEIGHT * 0.02,
             backgroundColor: 'white',
-            borderRadius: 50,
-            opacity: 0.2,
-            transform: [{scaleX: 4.5}, {scaleY: 4}],
-            position: 'absolute',
-            top: 0,
-            zIndex: -1,
-          }}
-        />
-      </ImageBackground>
+            flex: 1,
+            borderBottomLeftRadius: 16,
+            borderBottomRightRadius: 16,
+          }}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 18,
+              width: '90%',
+            }}>
+            {item.productName}
+          </Text>
+          <View
+            style={{
+              marginTop: HEIGHT * 0.01,
+              marginBottom: HEIGHT * 0.025,
+              height: 3,
+              backgroundColor: colors.primary,
+              width: '20%',
+            }}
+          />
+          <Text style={{fontWeight: 'bold', fontSize: 20}}>$ {item.Price}</Text>
+        </View>
+      </View>
     </TouchableOpacity>
   );
 };
 
-export const TabList = ({item, changeTab, currentCat}) => {
+export const WaTabs = ({item, WaChangeTab, WaCurrentCat}) => {
+  const insets = useSafeAreaInsets();
+  const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
-    <TouchableOpacity
-      style={styles.HomeTabsWrapper}
-      onPreWa={() => changeTab(item)}>
-      <Text
+    <View
+      style={{
+        width: H_W.width * 0.65,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        borderRadius: 16,
+        marginHorizontal: H_W.width * 0.05,
+      }}>
+      <ImageBackground
+        source={item.images}
+        style={{width: '100%', height: HEIGHT * 0.3, borderRadius: 16}}
+        imageStyle={{borderRadius: 16}}
+        resizeMode="contain"
+      />
+      <View
         style={{
-          ...styles.HomeTabsText,
-          color:
-            item.categoryName === currentCat.categoryName
-              ? colors.primary
-              : `rgba(${colors.rgb_Primary}, 0.5)`,
+          width: '100%',
+          alignItems: 'center',
+          justifyContent: 'center',
+          paddingVertical: HEIGHT * 0.03,
+          backgroundColor: colors.primary,
+          flex: 1,
+          borderBottomLeftRadius: 16,
+          borderBottomRightRadius: 16,
         }}>
-        {item.categoryName}
-      </Text>
-      {item.categoryName === currentCat.categoryName ? (
-        <View style={styles.tabIndicator} />
-      ) : null}
-    </TouchableOpacity>
+        <Text
+          style={{
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: 23,
+            width: '90%',
+          }}>
+          {item.categoryName}'s Fashion wear
+        </Text>
+        <View
+          style={{
+            marginTop: HEIGHT * 0.01,
+            marginBottom: HEIGHT * 0.025,
+            height: 3,
+            backgroundColor: 'white',
+            width: '20%',
+          }}
+        />
+        <Button
+          title="Discover        "
+          raised
+          titleStyle={{fontWeight: 'bold', color: colors.lightGrey3}}
+          buttonStyle={{
+            borderRadius: 50,
+            backgroundColor: 'white',
+            paddingHorizontal: H_W.width * 0.06,
+          }}
+          containerStyle={{borderRadius: 50}}
+          iconRight
+          icon={
+            <FontAwesome
+              name="long-arrow-right"
+              size={20}
+              color={colors.primary}
+            />
+          }
+        />
+      </View>
+    </View>
   );
+};
+
+const border = {
+  borderWidth: 1,
+  borderColor: 'red',
 };
 
 const styles = StyleSheet.create({
