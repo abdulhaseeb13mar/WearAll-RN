@@ -42,22 +42,24 @@ function MyHeader({
     <View style={styles.HeaderBarWrapper}>
       <View style={styles.HeaderBarInnerWrapper}>
         {LeftIconLibrary ? (
-          <TouchableOpacity onPreWa={leftIconAction} style={styles.IconWrap}>
+          <TouchableOpacity onPress={leftIconAction} style={styles.IconWrap}>
             <LeftIconLibrary
               name={leftIconName}
               size={H_W.width * 0.065}
               color={leftIconColor ? leftIconColor : colors.primary}
               style={leftIconStyle ? leftIconStyle : {}}
             />
-            {totalItems > 0 && leftIconName.includes('shopping') && (
-              <Badge
-                value={totalItems}
-                containerStyle={styles.badgeContainer}
-                badgeStyle={{
-                  backgroundColor: badgeColor ? badgeColor : 'red',
-                }}
-              />
-            )}
+            {totalItems > 0 &&
+              (leftIconName.includes('shopping') ||
+                leftIconName.includes('cart')) && (
+                <Badge
+                  value={totalItems}
+                  containerStyle={styles.badgeContainer}
+                  badgeStyle={{
+                    backgroundColor: badgeColor ? badgeColor : 'red',
+                  }}
+                />
+              )}
           </TouchableOpacity>
         ) : (
           <View
@@ -70,22 +72,24 @@ function MyHeader({
         )}
         <Text style={{...styles.HeaderText, ...titleStyle}}>{Title}</Text>
         {RightIconLibrary ? (
-          <TouchableOpacity onPreWa={rightIconAction} style={styles.IconWrap}>
+          <TouchableOpacity onPress={rightIconAction} style={styles.IconWrap}>
             <RightIconLibrary
               name={rightIconName}
               size={H_W.width * 0.075}
               color={rightIconColor ? rightIconColor : colors.primary}
               style={rightIconStyle ? rightIconStyle : {}}
             />
-            {totalItems > 0 && rightIconName.includes('shopping') && (
-              <Badge
-                value={totalItems}
-                containerStyle={styles.badgeContainer}
-                badgeStyle={{
-                  backgroundColor: badgeColor ? badgeColor : 'red',
-                }}
-              />
-            )}
+            {totalItems > 0 &&
+              (rightIconName.includes('shopping') ||
+                rightIconName.includes('cart')) && (
+                <Badge
+                  value={totalItems}
+                  containerStyle={styles.badgeContainer}
+                  badgeStyle={{
+                    backgroundColor: badgeColor ? badgeColor : 'red',
+                  }}
+                />
+              )}
           </TouchableOpacity>
         ) : (
           <View

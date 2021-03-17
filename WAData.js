@@ -29,6 +29,7 @@ export default {
       images: require('./WaPhotos/w1.png'),
       Description:
         'Slim fit with good room for movement and a gently shaped waist to create a comfortable, tailored silhouette.',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -39,6 +40,7 @@ export default {
       images: require('./WaPhotos/w26.png'),
       Description:
         'A knitted sweater featuring a V neckline, long baggy sleeves with open shoulders, and a twist-front hem.',
+      added: 0,
       Price: '50',
       bgColor: '#34495E',
     },
@@ -49,6 +51,7 @@ export default {
       images: require('./WaPhotos/w27.png'),
       Description:
         'A pullover featuring a colorblock design, full zip-front, long sleeves with banded cuffs, and an elasticized toggle-lock drawstring hem',
+      added: 0,
       Price: '55',
       bgColor: '#FDFEFE',
     },
@@ -59,6 +62,7 @@ export default {
       images: require('./WaPhotos/w28.png'),
       Description:
         'A top Featuring a ribbed twisted v-neckline shirt with full length sleeves, a relaxed fabric and form fitting silhouette',
+      added: 0,
       Price: '40',
       bgColor: '#FEF9E7',
     },
@@ -69,6 +73,7 @@ export default {
       images: require('./WaPhotos/w56.png'),
       Description:
         'Enjoy your day in these comfortable pastel blue shorts featuring zip fastening with button closure and multi pockets',
+      added: 0,
       Price: '20',
       bgColor: '#FDFEFE',
     },
@@ -79,6 +84,7 @@ export default {
       images: require('./WaPhotos/w57.png'),
       Description:
         "These cotton tights are the perfect partner for your day's adventure. Pick your style and pair it with your favorite tunics and tops to finish the look.",
+      added: 0,
       Price: '22',
       bgColor: '#FDFEFE',
     },
@@ -89,6 +95,7 @@ export default {
       images: require('./WaPhotos/w58.png'),
       Description:
         'These jeans are styled with a love-worn look they have a total of five functional pockets and a handy buttoned fly.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -101,6 +108,7 @@ export default {
       images: require('./WaPhotos/w1.png'),
       Description:
         'Slim fit with good room for movement and a gently shaped waist to create a comfortable, tailored silhouette.',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -111,6 +119,7 @@ export default {
       images: require('./WaPhotos/w2.png'),
       Description:
         'Slim fit with good room for movement and a gently shaped waist to create a comfortable, tailored silhouette.',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -120,6 +129,7 @@ export default {
       productName: 'Royal & White Slim Fit Dress Shirt',
       images: require('./WaPhotos/w3.png'),
       Description: 'Royal & White Slim Fit Dress Shirt',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -129,6 +139,7 @@ export default {
       productName: 'Blue Extra Slim Fit Cotton Stretch Shirt',
       images: require('./WaPhotos/w4.png'),
       Description: 'Blue Extra Slim Fit Cotton Stretch Shirt',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -139,6 +150,7 @@ export default {
       images: require('./WaPhotos/w5.png'),
       Description:
         "This men's dark green floral dobby shirt features a spot print design and a distinctive high two button collar. Designed with the modern man in mind, this Curtis shirt has been specially engineered to flatter your physique whilst maximizing comfort",
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -148,6 +160,7 @@ export default {
       productName: "Men's Organic Cotton Stretch Dark Teal Chinos",
       images: require('./WaPhotos/w6.png'),
       Description: "Men's Organic Cotton Stretch Dark Teal Chinos",
+      added: 0,
       Price: '45',
       bgColor: '#FDFEFE',
     },
@@ -159,6 +172,7 @@ export default {
       images: require('./WaPhotos/w7.png'),
       Description:
         'The pants have a tapered leg for a modern look. To ensure the best fit, these pants are unfinished and require alteration. This allows you to have your pants tailored to the precise length you require.',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -169,6 +183,7 @@ export default {
       images: require('./WaPhotos/w8.png'),
       Description:
         'These taupe chinos exude timeless smart casual style. They are crafted from fine twill organic cotton for softness and comfort. The organic cotton stretch fabric has been garment-dyed to create a soft, luxurious texture and enhance the colour.',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -179,6 +194,7 @@ export default {
       images: require('./WaPhotos/w9.png'),
       Description:
         'These bordeaux pants are a smart alternative to denim, whilst retaining a casual air. They are made in Italy and crafted from a subtly textured cotton-stretch fabric which is exceedingly smart and comfortable.',
+      added: 0,
       Price: '60',
       bgColor: '#FDFEFE',
     },
@@ -189,6 +205,7 @@ export default {
       images: require('./WaPhotos/w10.png'),
       Description:
         'These navy flannel pants are made from luxurious Italian wool from the renowned Angelico mill. They feature belt loops and a hook and eye fastening.',
+      added: 0,
       Price: '55',
       bgColor: '#FDFEFE',
     },
@@ -199,6 +216,7 @@ export default {
       images: require('./WaPhotos/w11.png'),
       Description:
         'Lightweight, button closure, hoodie shirts match with fashion shirts and jeans, which is a perfect match for Fall and spring wearing, suitable for casual wear, outdoor activities and any other occasions.',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -209,6 +227,7 @@ export default {
       images: require('./WaPhotos/w12.png'),
       Description:
         'Slim fit, long sleeve denim jacket with patches, lapel collar, single breasted buttons closure false two pieces jacket with pockets. All design make this outwear jeans jacket more normal, fashion, classic and show man elegant charm',
+      added: 0,
       Price: '55',
       bgColor: '#FDFEFE',
     },
@@ -219,6 +238,7 @@ export default {
       images: require('./WaPhotos/w13.png'),
       Description:
         'We added a flannel lining to our popular weathered cotton ’leather’ shirt to build this one-of-a-kind shirt jac. The rugged cotton suede look comes with an unexpected softness. Features side hand warmer pockets, antique brass Legendary snaps, Signature Buck appliqué, and double needle stitching. Cotton/poly blend. Big & Tall sizes are designed for men over 6\'2" and add 2" in body length and 1-1⁄2" in sleeve length',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -229,6 +249,7 @@ export default {
       images: require('./WaPhotos/w14.png'),
       Description:
         'High quality construction and detail make this insulated flannel a standout Legendary shirt jac. Features a 100% cotton yarn-dyed plaid, cotton/poly blend thermal lining in the body, and smooth lined quilted sleeves. Full poly-fill insulation and convenient side-seam pockets for extra warmth. Signature Buck snaps. Big & Tall sizes are designed for men over 6\'2" and add 2" in body length and 1-1⁄2" in sleeve length.',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -239,6 +260,7 @@ export default {
       images: require('./WaPhotos/w15.png'),
       Description:
         'High quality construction and detail make this insulated flannel a standout Legendary shirt jac. Features a 100% cotton yarn-dyed plaid, cotton/poly blend thermal lining in the body, and smooth lined quilted sleeves. Full poly-fill insulation and convenient side-seam pockets for extra warmth. Signature Buck snaps. Big & Tall sizes are designed for men over 6\'2" and add 2" in body length and 1-1⁄2" in sleeve length.',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -249,6 +271,7 @@ export default {
       images: require('./WaPhotos/w16.png'),
       Description:
         "A comfortable classic, introduced in 1985. Relaxed jeans with more room than the Levi's 501. Slightly baggy.",
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -259,6 +282,7 @@ export default {
       images: require('./WaPhotos/w17.png'),
       Description:
         "Dry, black, stretch denim with serious break-in potential. Unlike the rest of our dry, black stretch options, the yarns have a white core, and with 6 months of hard, everyday wear you will end up with some really beautiful wear and tear. Six months is a long time, and it's only a recommendation.",
+      added: 0,
       Price: '45',
       bgColor: '#FDFEFE',
     },
@@ -269,6 +293,7 @@ export default {
       images: require('./WaPhotos/w18.png'),
       Description:
         "Our very own Japanese comfort stretch selvage denim will break in beautifully if you give it time to develop and get that personal look. Six months is our recommendation for all our selvage qualities, and this applies to the stretch selvage options as well. However, it's only a recommendation.",
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -279,6 +304,7 @@ export default {
       images: require('./WaPhotos/w19.png'),
       Description:
         'Our premium denim is inspired by the classic vintage blue jean. Our Premium Japanese 4-Way Stretch Selvedge denim story starts in Japan where our fabric is developed at one of the oldest denim mills. ',
+      added: 0,
       Price: '45',
       bgColor: '#FDFEFE',
     },
@@ -289,6 +315,7 @@ export default {
       images: require('./WaPhotos/w20.png'),
       Description:
         'This relaxed fit jean is made with durable cotton denim that will hold up over time -- even through long days on the job',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -299,6 +326,7 @@ export default {
       images: require('./WaPhotos/w21.png'),
       Description:
         'A floral print top featuring round ruffled neckline, v chest cut out with a self tie, ruffled flare panels, long sleeves with peasant trim, and loose silhouette.',
+      added: 0,
       Price: '35',
       bgColor: '#EBDEF0',
     },
@@ -309,6 +337,7 @@ export default {
       images: require('./WaPhotos/w22.png'),
       Description:
         'A printed top featuring off shoulder, elasticized sleeves,self tie front and cropped hem.',
+      added: 0,
       Price: '32',
       bgColor: '#F1948A',
     },
@@ -319,6 +348,7 @@ export default {
       images: require('./WaPhotos/w23.png'),
       Description:
         'Atop featuring an allover floral print, off shoulder,elasticized neckline, full sleeves and flounce hem.',
+      added: 0,
       Price: '38',
       bgColor: '#F1948A',
     },
@@ -329,6 +359,7 @@ export default {
       images: require('./WaPhotos/w24.png'),
       Description:
         'A smocked top featuring an off shoulder, lace up crisscrosses through high-polish grommets front, elasticized sleeves and ruffled hem',
+      added: 0,
       Price: '40',
       bgColor: '#34495E',
     },
@@ -339,6 +370,7 @@ export default {
       images: require('./WaPhotos/w25.png'),
       Description:
         'A ribbed top featuring low cut v-neckline, short open flare sleeves, waist band, button closure open back with a self tie bow.',
+      added: 0,
       Price: '40',
       bgColor: '#34495E',
     },
@@ -349,6 +381,7 @@ export default {
       images: require('./WaPhotos/w26.png'),
       Description:
         'A knitted sweater featuring a V neckline, long baggy sleeves with open shoulders, and a twist-front hem.',
+      added: 0,
       Price: '50',
       bgColor: '#34495E',
     },
@@ -359,6 +392,7 @@ export default {
       images: require('./WaPhotos/w27.png'),
       Description:
         'A pullover featuring a colorblock design, full zip-front, long sleeves with banded cuffs, and an elasticized toggle-lock drawstring hem',
+      added: 0,
       Price: '55',
       bgColor: '#FDFEFE',
     },
@@ -369,6 +403,7 @@ export default {
       images: require('./WaPhotos/w28.png'),
       Description:
         'A top Featuring a ribbed twisted v-neckline shirt with full length sleeves, a relaxed fabric and form fitting silhouette',
+      added: 0,
       Price: '40',
       bgColor: '#FEF9E7',
     },
@@ -379,6 +414,7 @@ export default {
       images: require('./WaPhotos/w29.png'),
       Description:
         'A knit hoodie featuring a colorblock design, drawstring hood, banded trim and full sleeves banded cuff',
+      added: 0,
       Price: '50',
       bgColor: '#FDFEFE',
     },
@@ -389,6 +425,7 @@ export default {
       images: require('./WaPhotos/w30.png'),
       Description:
         'Black solid denim jacket, has a spread collar, button closure, long sleeves, two pockets, straight hem with fringed detail',
+      added: 0,
       Price: '40',
       bgColor: '#E5E8E8',
     },
@@ -399,6 +436,7 @@ export default {
       images: require('./WaPhotos/w31.png'),
       Description:
         'A pair of high waist pants featuring ruffled waist, removable sash belt with diamonate circle belt, belt loops, button closure waist, zip fly, slanted pockets and wide legs.',
+      added: 0,
       Price: '45',
       bgColor: '#E74C3C',
     },
@@ -409,6 +447,7 @@ export default {
       images: require('./WaPhotos/w32.png'),
       Description:
         'A pair of high-rise pants featuring a banded waist, slant pockets with golden buttons accents, and wide legs.',
+      added: 0,
       Price: '40',
       bgColor: '#C39BD3',
     },
@@ -419,6 +458,7 @@ export default {
       images: require('./WaPhotos/w33.png'),
       Description:
         'A pair of denim jeans featuring three buttons closure high-rise notch waist, side straps with button, mock front slanted pockets, zip fly, back patch pockets and a skinny leg',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -429,6 +469,7 @@ export default {
       images: require('./WaPhotos/w34.png'),
       Description:
         'An allover stripes printed skirt, featuring elasticized waist, single edge horizontal trim, flounce hem, with attached innerlay',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -439,6 +480,7 @@ export default {
       images: require('./WaPhotos/w35.png'),
       Description:
         'A midi lenght skirts featuring anallover floral net featuring elasticized waist band and flowy silhouette',
+      added: 0,
       Price: '45',
       bgColor: '#FDFEFE',
     },
@@ -449,6 +491,7 @@ export default {
       images: require('./WaPhotos/w36.png'),
       Description:
         'A pleated dress featuring round neckline, cami strap, sleeveless cut, self tie sash, two buttons closure back, and flowy silhouette',
+      added: 0,
       Price: '60',
       bgColor: '#FDFEFE',
     },
@@ -459,6 +502,7 @@ export default {
       images: require('./WaPhotos/w37.png'),
       Description:
         'A mesh dress featuring an allover floral embroidery, round neckline with stones work, sleeveless cut, padded bust, stones details on waist, self tie belt, side zip closure, elasticized back and flowy silhouette. Silk Inner attached.',
+      added: 0,
       Price: '60',
       bgColor: '#FDFEFE',
     },
@@ -469,6 +513,7 @@ export default {
       images: require('./WaPhotos/w38.png'),
       Description:
         'Dress featuring crew neckline, sheer mesh panel that forms a plunging illusion neckline, embroidered yoke details with sequins and stones work, front waist bow with a self tie at back, sleeveless cut, elasticized back, side zip closure and pleated flowy silhouette.',
+      added: 0,
       Price: '55',
       bgColor: '#C39BD3',
     },
@@ -479,6 +524,7 @@ export default {
       images: require('./WaPhotos/w39.png'),
       Description:
         'Long dress featuring round neckline, embroidered lace cutout with sequins and stones works on front, sleeveless cut, paded bust, side zip closure, pleated silhouette, elasticized back and a self tie waist belt at the back.',
+      added: 0,
       Price: '60',
       bgColor: '#E74C3C',
     },
@@ -489,6 +535,7 @@ export default {
       images: require('./WaPhotos/w40.png'),
       Description:
         'Velvet mini dress featuring floral sheer mesh neck panel and full elasticized sleeves, ruched yoke, key hole button closure, and flowy silhouette.',
+      added: 0,
       Price: '40',
       bgColor: '#FDFEFE',
     },
@@ -499,6 +546,7 @@ export default {
       images: require('./WaPhotos/w41.png'),
       Description:
         "Make your child's wardrobe brighter with our arctic blue shirt completed with classic collar, buttoned front and full length sleeves",
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -509,6 +557,7 @@ export default {
       images: require('./WaPhotos/w42.png'),
       Description:
         'Define your timeless style with this Polo shirt. It has two button placket and long sleeves that will be perfect to update your winter wardrobe.',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -519,6 +568,7 @@ export default {
       images: require('./WaPhotos/w43.png'),
       Description:
         "This t-shirt features a flat collar with a three-button placket and full sleeves with ribbed cuffs. It's ideal for layering with jeans to boost your stylish look.",
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -529,6 +579,7 @@ export default {
       images: require('./WaPhotos/w44.png'),
       Description:
         'This effortlessly cool yellow shirt is perfect for your little handsome. It features a classic collar, full-length sleeves and a single chest pocket.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -539,6 +590,7 @@ export default {
       images: require('./WaPhotos/w45.png'),
       Description:
         'This all-over printed long-sleeved shirt with a chest pocket is perfect for cooler days. To finish the design it has a point collar and button-down fastening.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -549,6 +601,7 @@ export default {
       images: require('./WaPhotos/w46.png'),
       Description:
         'Grab these shorts crafted from twill material for young boys, they have a buttoned fly and multiple pockets to keep your belongings secure.',
+      added: 0,
       Price: '25',
       bgColor: '#FDFEFE',
     },
@@ -559,6 +612,7 @@ export default {
       images: require('./WaPhotos/w47.png'),
       Description:
         'Grab these cotton shorts for young boys, they have a buttoned fly and multiple pockets to keep your belongings secure.',
+      added: 0,
       Price: '27',
       bgColor: '#FDFEFE',
     },
@@ -569,6 +623,7 @@ export default {
       images: require('./WaPhotos/w48.png'),
       Description:
         'Grab these shorts crafted from twill material for young boys, they have a buttoned fly and multiple pockets to keep your belongings secure.',
+      added: 0,
       Price: '27',
       bgColor: '#FDFEFE',
     },
@@ -579,6 +634,7 @@ export default {
       images: require('./WaPhotos/w49.png'),
       Description:
         'A truly exceptional pair of pants can be the perfect addition to any casual wardrobe. These twill pants feature buttoned fly and traditional five pockets for a vintage-inspired look.',
+      added: 0,
       Price: '35',
       bgColor: '#FDFEFE',
     },
@@ -589,6 +645,7 @@ export default {
       images: require('./WaPhotos/w50.png'),
       Description:
         'Grab these shorts crafted from twill material for young boys, they have a buttoned fly and multiple pockets to keep your belongings secure.',
+      added: 0,
       Price: '25',
       bgColor: '#FDFEFE',
     },
@@ -599,6 +656,7 @@ export default {
       images: require('./WaPhotos/w51.png'),
       Description:
         'Your little girl will fall in love with this beautiful t-shirt crafted from a cotton jersey to ensure all-day comfort. It has short sleeves, a round neck and an adorable graphic printed on the front.',
+      added: 0,
       Price: '20',
       bgColor: '#FDFEFE',
     },
@@ -609,6 +667,7 @@ export default {
       images: require('./WaPhotos/w52.png'),
       Description:
         'This cotton check top features a round neck with a button placket, frilled short sleeves and a fun-filled frill at the hem for a relaxed feel.',
+      added: 0,
       Price: '25',
       bgColor: '#FDFEFE',
     },
@@ -619,6 +678,7 @@ export default {
       images: require('./WaPhotos/w53.png'),
       Description:
         'Look smart and get noticed with this cotton top featuring a round neck with front button fastening, short sleeves, two front pockets and subtle embroidery on the yoke.',
+      added: 0,
       Price: '27',
       bgColor: '#FDFEFE',
     },
@@ -629,6 +689,7 @@ export default {
       images: require('./WaPhotos/w54.png'),
       Description:
         'Grab this bright summery dress to have fun with your friends. It features a round neck, short sleeves, a fun graphic printed on the front and gathers at the hem to add a stylish finish to your outfit.',
+      added: 0,
       Price: '20',
       bgColor: '#FDFEFE',
     },
@@ -639,6 +700,7 @@ export default {
       images: require('./WaPhotos/w55.png'),
       Description:
         'Add this allover printed cotton dress to your style wardrobe. It features a round neck adorned with ruffles and gathers at the waist with smocking details.',
+      added: 0,
       Price: '25',
       bgColor: '#FDFEFE',
     },
@@ -649,6 +711,7 @@ export default {
       images: require('./WaPhotos/w56.png'),
       Description:
         'Enjoy your day in these comfortable pastel blue shorts featuring zip fastening with button closure and multi pockets',
+      added: 0,
       Price: '20',
       bgColor: '#FDFEFE',
     },
@@ -659,6 +722,7 @@ export default {
       images: require('./WaPhotos/w57.png'),
       Description:
         "These cotton tights are the perfect partner for your day's adventure. Pick your style and pair it with your favorite tunics and tops to finish the look.",
+      added: 0,
       Price: '22',
       bgColor: '#FDFEFE',
     },
@@ -669,6 +733,7 @@ export default {
       images: require('./WaPhotos/w58.png'),
       Description:
         'These jeans are styled with a love-worn look they have a total of five functional pockets and a handy buttoned fly.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -679,6 +744,7 @@ export default {
       images: require('./WaPhotos/w59.png'),
       Description:
         'These jeans are styled with a love-worn look they have a total of five functional pockets and a handy buttoned fly.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },
@@ -689,6 +755,7 @@ export default {
       images: require('./WaPhotos/w60.png'),
       Description:
         'If you’re looking for a perfect pair of jeans then this is it. It features a button fly and traditional five pockets to finish the look.',
+      added: 0,
       Price: '30',
       bgColor: '#FDFEFE',
     },

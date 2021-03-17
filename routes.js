@@ -6,7 +6,8 @@ import {
 import {NavigationContainer} from '@react-navigation/native';
 import Navigator from './WaComp/RefNavigation';
 import WaHome from './WaSrc/WaHome';
-// import WaSP from './WaSrc/WaSP';
+import WaAP from './WaSrc/WaAP';
+import WaSP from './WaSrc/WaSP';
 // import WaCart from './WaSrc/WaCart';
 // import WaContact from './WaSrc/WaContact';
 // import WaSearch from './WaSrc/WaSearch';
@@ -26,7 +27,8 @@ function Routes(props) {
           cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
         }}>
         <Stack.Screen name="WaHome" component={WaHome} />
-        {/* <Stack.Screen name="WaSP" component={WaSP} /> */}
+        <Stack.Screen name="WaAP" component={WaAP} />
+        <Stack.Screen name="WaSP" component={WaSP} />
         {/* <Stack.Screen name="WaCart" component={WaCart} /> */}
         {/* <Stack.Screen name="WaSearch" component={WaSearch} /> */}
         {/* <Stack.Screen name="WaContact" component={WaContact} /> */}

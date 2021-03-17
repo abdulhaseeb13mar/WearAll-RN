@@ -28,7 +28,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Avatar, Badge, Button} from 'react-native-elements';
 import WaSearchBar from '../WaComp/WaSearchBar';
 import Header from '../WaComp/WaHeader';
-import DP from '../WaPhotos/w29.png';
 
 function WaHome(props) {
   useEffect(() => {
@@ -51,27 +50,28 @@ function WaHome(props) {
 
   // const WaGotoCart = () => RefNavigation.Navigate('WaCart');
   // const WaGotoSearch = () => RefNavigation.Navigate('WaSearch');
-  // const WaGoToSingleProduct = item => {
-  //   props.WasetCurrentProductAction(item);
-  //   RefNavigation.Navigate('WaSP');
-  // };
+  const WaGoToSingleProduct = item => {
+    props.WasetCurrentProductAction(item);
+    RefNavigation.Navigate('WaSP');
+  };
+  const WaGotoAllProducts = item => RefNavigation.Navigate('WaAP', item);
   return (
     <WrapperScreen style={{backgroundColor: colors.lightGrey4}}>
+      <Header
+        leftIcon={AntDesign}
+        rightIcon={Ionicons}
+        rightIconColor="black"
+        leftIconColor="black"
+        leftIconName="hearto"
+        rightIconName="ios-cart-outline"
+        // leftIconAction=
+        Title={
+          <Text>
+            Wear<Text style={{color: 'black'}}>All</Text>
+          </Text>
+        }
+      />
       <ScrollView>
-        <Header
-          leftIcon={AntDesign}
-          rightIcon={Ionicons}
-          rightIconColor="black"
-          leftIconColor="black"
-          leftIconName="hearto"
-          rightIconName="ios-cart-outline"
-          // leftIconAction=
-          Title={
-            <Text>
-              Wear<Text style={{color: 'black'}}>All</Text>
-            </Text>
-          }
-        />
         <View
           style={{
             alignItems: 'center',
@@ -86,11 +86,7 @@ function WaHome(props) {
           <Loop
             data={WaCategories}
             renderItem={({item}) => (
-              <WaTabs
-                item={item}
-                WaCurrentCat={WaCurrentCat}
-                WaChangeTab={WaChangeTab}
-              />
+              <WaTabs item={item} WaGotoAllProducts={WaGotoAllProducts} />
             )}
           />
         </View>
@@ -109,8 +105,7 @@ function WaHome(props) {
             renderItem={({item}) => (
               <ProductList
                 item={item}
-                WaCurrentCat={WaCurrentCat}
-                WaChangeTab={WaChangeTab}
+                WaGoToSingleProduct={WaGoToSingleProduct}
               />
             )}
           />
@@ -120,11 +115,11 @@ function WaHome(props) {
   );
 }
 
-export const ProductList = ({item, WaGoToSingleProduct}) => {
+export const ProductList = ({item, WaGoToSingleProduct, explore}) => {
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
-    <TouchableOpacity onPreWa={() => WaGoToSingleProduct(item)}>
+    <TouchableOpacity onPress={() => WaGoToSingleProduct(item)}>
       <View
         style={{
           width: H_W.width * 0.45,
@@ -139,7 +134,8 @@ export const ProductList = ({item, WaGoToSingleProduct}) => {
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
           borderRadius: 16,
-          marginHorizontal: H_W.width * 0.05,
+          marginHorizontal: explore ? 0 : H_W.width * 0.05,
+          marginVertical: HEIGHT * 0.01,
         }}>
         <ImageBackground
           source={item.images}
@@ -162,7 +158,7 @@ export const ProductList = ({item, WaGoToSingleProduct}) => {
             style={{
               textAlign: 'center',
               fontWeight: 'bold',
-              fontSize: 18,
+              fontSize: explore ? 16 : 18,
               width: '90%',
             }}>
             {item.productName}
@@ -183,7 +179,7 @@ export const ProductList = ({item, WaGoToSingleProduct}) => {
   );
 };
 
-export const WaTabs = ({item, WaChangeTab, WaCurrentCat}) => {
+export const WaTabs = ({item, WaGotoAllProducts}) => {
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
@@ -213,34 +209,37 @@ export const WaTabs = ({item, WaChangeTab, WaCurrentCat}) => {
         style={{
           width: '100%',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
           paddingVertical: HEIGHT * 0.03,
           backgroundColor: colors.primary,
           flex: 1,
           borderBottomLeftRadius: 16,
           borderBottomRightRadius: 16,
         }}>
-        <Text
-          style={{
-            textAlign: 'center',
-            fontWeight: 'bold',
-            fontSize: 23,
-            width: '90%',
-          }}>
-          {item.categoryName}'s Fashion wear
-        </Text>
-        <View
-          style={{
-            marginTop: HEIGHT * 0.01,
-            marginBottom: HEIGHT * 0.025,
-            height: 3,
-            backgroundColor: 'white',
-            width: '20%',
-          }}
-        />
+        <View style={{alignItems: 'center'}}>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontWeight: 'bold',
+              fontSize: 23,
+              width: H_W.width * 0.65,
+            }}>
+            {item.categoryName}'s Fashion wear
+          </Text>
+          <View
+            style={{
+              marginTop: HEIGHT * 0.01,
+              marginBottom: HEIGHT * 0.015,
+              height: 2,
+              backgroundColor: 'white',
+              width: H_W.width * 0.15,
+            }}
+          />
+        </View>
         <Button
           title="Discover        "
           raised
+          onPress={() => WaGotoAllProducts(item)}
           titleStyle={{fontWeight: 'bold', color: colors.lightGrey3}}
           buttonStyle={{
             borderRadius: 50,
