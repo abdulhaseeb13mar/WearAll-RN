@@ -40,7 +40,6 @@ export default connect(null, {WaresetCart})(React.memo(WaConfirmOrder));
 const styles = StyleSheet.create({
   WaConfirmOrder1: {
     backgroundColor: colors.primary,
-    statusColor: colors.primary,
   },
   WaConfirmOrder2: {
     flex: 1,
