@@ -15,17 +15,15 @@ const WaCartReducer = (st = cart, action) => {
   switch (action.type) {
     case ActionTypes.ADD_ITEM_CART:
       let ITEM_ID = `${action.payload.id}_${action.payload.size}`;
-      console.log(ITEM_ID);
       if (!prev_items[ITEM_ID]) {
-        prev_items[ITEM_ID] = {...action.payload};
+        prev_items[ITEM_ID] = {...action.payload, added: 0};
       }
       let added1 = prev_items[ITEM_ID].added + 1;
       prev_items[ITEM_ID].added = added1;
       let tot_items = st.totalItems + 1;
       let tot_amount = (
-        parseFloat(st.totalAmount) + parseFloat(action.payload.price)
+        parseFloat(st.totalAmount) + parseFloat(action.payload.Price)
       ).toFixed(2);
-      console.log(prev_items);
       st = Object.assign({}, st, {
         items: prev_items,
         totalItems: tot_items,
@@ -43,7 +41,7 @@ const WaCartReducer = (st = cart, action) => {
       }
       tot_items = st.totalItems - 1;
       tot_amount = (
-        parseFloat(st.totalAmount) - parseFloat(action.payload.price)
+        parseFloat(st.totalAmount) - parseFloat(action.payload.Price)
       ).toFixed(2);
       st = Object.assign({}, st, {
         items: prev_items,

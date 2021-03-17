@@ -73,7 +73,7 @@ const DefaultCounter = ({
           flexDirection:
             position === 'top' || position === 'bottom' ? 'row' : 'column',
         }}>
-        <TouchableOpacity onPreWa={() => WaremoveCart(item)}>
+        <TouchableOpacity onPress={() => WaremoveCart(item)}>
           <Feather
             name="minus-circle"
             size={H_W.width * 0.05}
@@ -87,7 +87,7 @@ const DefaultCounter = ({
           }}>
           {item.added}
         </Text>
-        <TouchableOpacity onPreWa={() => WaaddCart(item)}>
+        <TouchableOpacity onPress={() => WaaddCart(item)}>
           <Feather
             name="plus-circle"
             size={H_W.width * 0.05}

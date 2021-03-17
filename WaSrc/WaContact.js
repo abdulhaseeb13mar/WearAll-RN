@@ -9,7 +9,7 @@ import {H_W} from '../WaComp/WaDim';
 import {colors} from '../WaComp/WaColor';
 import {Button, Overlay} from 'react-native-elements';
 import Entypo from 'react-native-vector-icons/Entypo';
-import Feather from 'react-native-vector-icons/Feather';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {isFormValid} from '../WaComp/validation';
 import NavPointer from '../WaComp/RefNavigation';
@@ -24,16 +24,16 @@ const ConfirmOrder = props => {
   const [firstNameErrMsg, setFirstNameErrMsg] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [addreWa, setAddreWa] = useState('');
+  const [address, setAddress] = useState('');
   const [firstName, setFirstName] = useState('');
   const [emailErrMsg, setEmailErrMsg] = useState('');
   const [email, setEmail] = useState('');
   const [phoneErrMsg, setPhoneErrMsg] = useState('');
-  const [addreWaErrMsg, setAddreWaErrMsg] = useState('');
+  const [addressErrMsg, setAddressErrMsg] = useState('');
   const [phone, setPhone] = useState('');
 
   const Confirm = () => {
-    const formValidResponse = isFormValid(firstName, email, phone, addreWa);
+    const formValidResponse = isFormValid(firstName, email, phone, address);
     if (!formValidResponse.status) {
       errorMsgHandler(formValidResponse.errCategory, formValidResponse.errMsg);
     } else {
@@ -42,7 +42,7 @@ const ConfirmOrder = props => {
         email: email,
         firstName: firstName,
         phone: phone,
-        addreWa: addreWa,
+        address: address,
       });
     }
   };
@@ -68,10 +68,10 @@ const ConfirmOrder = props => {
           },
           body: JSON.stringify({
             firstname: firstName,
-            addreWa: addreWa,
+            address: address,
             phonenumber: phone,
             email: email,
-            appname: 'SweetnSticky',
+            appname: 'Wear All',
           }),
         },
       );
@@ -90,19 +90,19 @@ const ConfirmOrder = props => {
       setEmailErrMsg(errMsg);
       setPhoneErrMsg('');
       setFirstNameErrMsg('');
-      setAddreWaErrMsg('');
+      setAddressErrMsg('');
     } else if (errCategory === 'firstname') {
       setEmailErrMsg('');
       setFirstNameErrMsg(errMsg);
       setPhoneErrMsg('');
-      setAddreWaErrMsg('');
+      setAddressErrMsg('');
     } else if (errCategory === 'phone') {
       setPhoneErrMsg(errMsg);
       setEmailErrMsg('');
       setFirstNameErrMsg('');
-      setAddreWaErrMsg('');
-    } else if (errCategory === 'addreWa') {
-      setAddreWaErrMsg(errMsg);
+      setAddressErrMsg('');
+    } else if (errCategory === 'address') {
+      setAddressErrMsg(errMsg);
       setPhoneErrMsg('');
       setFirstNameErrMsg('');
       setEmailErrMsg('');
@@ -115,14 +115,14 @@ const ConfirmOrder = props => {
     NavPointer.Push('WaHome');
   };
 
-  const changePhone = t => setPhone(t);
-  const changeAddreWa = t => setAddreWa(t);
+  const changeAddress = t => setAddress(t);
   const changeEmail = t => setEmail(t);
-  const goBack = () => NavPointer.GoBack();
   const changeFirstName = t => setFirstName(t);
+  const goBack = () => NavPointer.GoBack();
+  const changePhone = t => setPhone(t);
 
   return (
-    <WrapperScreen style={{backgroundColor: colors.lightBackground}}>
+    <WrapperScreen style={{backgroundColor: colors.lightGrey4}}>
       <KeyboardAwareScrollView style={styles.container} bounces={false}>
         <UseHeader
           leftIcon={Entypo}
@@ -140,18 +140,6 @@ const ConfirmOrder = props => {
             textShadowRadius: 2,
           }}
         />
-        <View style={{...styles.WaSummaryOverlay, marginBottom: HEIGHT * 0.02}}>
-          <View style={styles.WaSm1}>
-            <View style={styles.WaSm2}>
-              <Text>Total:</Text>
-              <Text style={{fontWeight: 'bold'}}>${props.total}</Text>
-            </View>
-            <View style={styles.WaSm3}>
-              <Text style={styles.WaSm4}>Payment Mode:</Text>
-              <Text style={styles.WaSm4}>Payment on delivery</Text>
-            </View>
-          </View>
-        </View>
         <View style={styles.WaPersonalInfoWrapper}>
           <View style={styles.WaSinglePersonalInfoWrapper}>
             <Text
@@ -168,8 +156,8 @@ const ConfirmOrder = props => {
                 onChangeText={changeFirstName}
                 placeholderTextColor={colors.lightGrey3}
               />
-              <Feather
-                name="user"
+              <MaterialIcons
+                name="drive-file-rename-outline"
                 size={H_W.width * 0.07}
                 style={styles.WaInputIcon}
               />
@@ -190,8 +178,8 @@ const ConfirmOrder = props => {
                 onChangeText={changeEmail}
                 placeholderTextColor={colors.lightGrey3}
               />
-              <FontAwesome5
-                name="envelope"
+              <MaterialIcons
+                name="mail"
                 size={H_W.width * 0.07}
                 style={styles.WaInputIcon}
               />
@@ -224,15 +212,15 @@ const ConfirmOrder = props => {
             <Text
               style={{
                 ...styles.WaPersonalInfoHeadingName,
-                color: addreWaErrMsg ? 'red' : 'black',
+                color: addressErrMsg ? 'red' : 'black',
               }}>
-              DELIVERY ADDREWa<Text> {addreWaErrMsg}</Text>
+              DELIVERY ADDRESS<Text> {addressErrMsg}</Text>
             </Text>
             <View style={styles.WaPersonalInfoInputWrapper}>
               <TextInput
-                placeholder="AddreWa"
+                placeholder="Address"
                 style={{...styles.Input, height: HEIGHT * 0.065}}
-                onChangeText={changeAddreWa}
+                onChangeText={changeAddress}
                 placeholderTextColor={colors.lightGrey3}
               />
               <FontAwesome5
@@ -240,6 +228,18 @@ const ConfirmOrder = props => {
                 size={H_W.width * 0.07}
                 style={styles.WaInputIcon}
               />
+            </View>
+          </View>
+        </View>
+        <View style={{...styles.WaSummaryOverlay, marginBottom: HEIGHT * 0.02}}>
+          <View style={styles.WaSm1}>
+            <View style={styles.WaSm2}>
+              <Text style={{fontWeight: 'bold'}}>Total:</Text>
+              <Text style={{fontWeight: 'bold'}}>${props.total}</Text>
+            </View>
+            <View style={styles.WaSm3}>
+              <Text style={styles.WaSm4}>Payment Mode:</Text>
+              <Text style={styles.WaSm4}>Payment on delivery</Text>
             </View>
           </View>
         </View>
@@ -259,7 +259,7 @@ const ConfirmOrder = props => {
             titleStyle={{color: 'white', fontWeight: 'bold'}}
             loadingProps={{color: 'black'}}
             loading={loading}
-            onPreWa={Confirm}
+            onPress={Confirm}
           />
         </View>
         <Overlay
@@ -311,7 +311,7 @@ const styles = StyleSheet.create({
   },
   WaSm1: {
     width: '75%',
-    backgroundColor: colors.secondary,
+    backgroundColor: 'white',
     borderRadius: 18,
     elevation: 2,
     shadowColor: '#000',
@@ -355,12 +355,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    borderRadius: 50,
+    borderRadius: 15,
   },
   WaConfirmButton: {
     backgroundColor: colors.primary,
 
-    borderRadius: 50,
+    borderRadius: 15,
   },
   WaConfirmButtonWrapper: {
     display: 'flex',

@@ -1,6 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {View, Text, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {
   WaremoveCartAction,
@@ -14,7 +20,6 @@ import {H_W} from '../WaComp/WaDim';
 import RefNavigation from '../WaComp/RefNavigation';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {Button} from 'react-native-elements';
-import Loop from '../WaComp/WaFlatList';
 import WaItemCounterWrapper from '../WaComp/WaItemCounterWrapper';
 import {ProductList} from './WaHome';
 
@@ -47,128 +52,79 @@ export const Cart = props => {
   const WainfoScreen = () => RefNavigation.Navigate('WaContact');
 
   return (
-    <WrapperScreen
-      style={{backgroundColor: `rgba(${colors.rgb_Primary}, 0.15)`}}>
+    <WrapperScreen style={{backgroundColor: colors.lightGrey4}}>
       <ScrollView bounces={false} style={{flex: 1}}>
         <View
           style={{
-            width: H_W.width,
             height: HEIGHT * 0.15,
-            borderBottomLeftRadius: 30,
-            borderBottomRightRadius: 30,
-            backgroundColor: colors.primary,
-            paddingHorizontal: H_W.width * 0.04,
-            elevation: 4,
-            shadowColor: '#000',
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.23,
-            shadowRadius: 2.62,
+            ...styles.WaCart1,
           }}>
           <View
             style={{
               marginTop: HEIGHT * 0.03,
-              flexDirection: 'row',
-              alignItems: 'center',
+              ...styles.WaCart2,
             }}>
-            <TouchableOpacity onPreWa={WaGoBack}>
+            <TouchableOpacity onPress={WaGoBack}>
               <Entypo
                 name="chevron-left"
-                color="white"
+                color={colors.primary}
                 size={H_W.width * 0.06}
               />
             </TouchableOpacity>
-            <Text
-              style={{
-                fontWeight: 'bold',
-                color: 'white',
-                fontSize: 23,
-                marginLeft: H_W.width * 0.25,
-              }}>
-              Your Cart
-            </Text>
+            <Text style={styles.WaCart3}>Your Cart</Text>
           </View>
           <View
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+              ...styles.WaCart4,
               marginTop: HEIGHT * 0.015,
-              paddingHorizontal: H_W.width * 0.06,
             }}>
-            <Text
-              style={{
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: H_W.width * 0.045,
-              }}>
-              Total Bill:
-            </Text>
-            <Text
-              style={{
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: H_W.width * 0.05,
-                backgroundColor: colors.secondary,
-                padding: 3,
-                borderRadius: 8,
-                elevation: 2,
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 1,
-                },
-                shadowOpacity: 0.2,
-                shadowRadius: 1.41,
-              }}>
-              ${props.WaTotal}
-            </Text>
+            <Text style={styles.WaCart5}>Total Bill:</Text>
+            <View style={styles.WaCart6}>
+              <Text style={styles.WaCart7}>${props.WaTotal}</Text>
+            </View>
           </View>
         </View>
-        <View style={{marginTop: HEIGHT * 0.04}}>
+        <View
+          style={{
+            marginBottom: HEIGHT * 0.02,
+            marginTop: HEIGHT * 0.04,
+            ...styles.WaCart8,
+          }}>
           {HorizontalCartArray.length > 0 ? (
-            <Loop
-              data={HorizontalCartArray}
-              renderItem={({item}) => (
+            HorizontalCartArray.map((item, index) => {
+              return (
                 <WaItemCounterWrapper
+                  key={index}
                   position="bottom"
                   Counterlength={HEIGHT * 0.15}
-                  style={{marginLeft: H_W.width * 0.02}}
+                  style={{marginBottom: H_W.width * 0.02}}
                   item={item}
                   counterColor={colors.primary}
-                  counterContentColor={'white'}
-                  CeGoToSingleProduct={WaGoToSingleProduct}>
+                  counterContentColor={'white'}>
                   <ProductList
                     item={item}
+                    explore={true}
                     WaGoToSingleProduct={WaGoToSingleProduct}
+                    isCart={true}
                   />
                 </WaItemCounterWrapper>
-              )}
-            />
+              );
+            })
           ) : (
-            <Text
-              style={{
-                width: '100%',
-                fontWeight: 'bold',
-                color: 'black',
-                textAlign: 'center',
-              }}>
-              Your Cart is empty...
-            </Text>
+            <Text style={styles.WaCart9}>Your Cart is empty...</Text>
           )}
         </View>
       </ScrollView>
       <Button
-        onPreWa={WainfoScreen}
+        onPress={WainfoScreen}
         title="Proceed to Checkout"
         disabled={props.WaTotal < 1}
         buttonStyle={{
           backgroundColor: colors.primary,
-          paddingVertical: HEIGHT * 0.015,
           borderRadius: 0,
+          paddingVertical: HEIGHT * 0.015,
         }}
+        titleStyle={{fontWeight: 'bold'}}
         containerStyle={{borderRadius: 0}}
       />
     </WrapperScreen>
@@ -185,3 +141,70 @@ export default connect(mapStateToProps, {
   WaaddCartAction,
   WasetCurrentProductAction,
 })(Cart);
+
+const styles = StyleSheet.create({
+  WaCart1: {
+    width: H_W.width,
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    backgroundColor: 'white',
+    paddingHorizontal: H_W.width * 0.04,
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+  },
+  WaCart2: {flexDirection: 'row', alignItems: 'center'},
+  WaCart3: {
+    fontWeight: 'bold',
+    color: colors.primary,
+    fontSize: 23,
+    marginLeft: H_W.width * 0.25,
+  },
+  WaCart4: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: H_W.width * 0.06,
+  },
+  WaCart5: {
+    color: colors.primary,
+    fontWeight: 'bold',
+    fontSize: H_W.width * 0.045,
+  },
+  WaCart6: {
+    backgroundColor: colors.primary,
+    padding: 5,
+    borderRadius: 8,
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+  },
+  WaCart7: {
+    fontWeight: 'bold',
+    fontSize: H_W.width * 0.05,
+    color: 'white',
+  },
+  WaCart8: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+  },
+  WaCart9: {
+    width: '100%',
+    fontWeight: 'bold',
+    color: 'black',
+    textAlign: 'center',
+  },
+  WaCart10: {},
+});

@@ -3,7 +3,7 @@ import {StackActions} from '@react-navigation/native';
 
 var refNavigation;
 
-const InitializeRefNavigation = (ref) => {
+const InitializeRefNavigation = ref => {
   refNavigation = ref;
 };
 

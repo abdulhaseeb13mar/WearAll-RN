@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import RefNavigation from '../WaComp/RefNavigation';
 import WrapperScreen from '../WaComp/WrapperScreen';
@@ -10,7 +10,6 @@ import {colors} from '../WaComp/WaColor';
 import {H_W} from '../WaComp/WaDim';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Header from '../WaComp/WaHeader';
-import Loop from '../WaComp/WaFlatList';
 import {ProductList} from './WaHome';
 import Data from '../WAData';
 import {WasetCurrentProductAction} from '../WaRedux/WaActions';
@@ -57,46 +56,22 @@ export const WaAP = props => {
         <Text
           style={{
             marginTop: HEIGHT * 0.04,
-            fontWeight: 'bold',
-            fontSize: 32,
-            paddingLeft: H_W.width * 0.05,
+            ...styles.WaAp1,
           }}>
           {props.route.params.categoryName}'s Fashion
         </Text>
-        <Text
-          style={{
-            fontWeight: 'bold',
-            fontSize: 32,
-            paddingLeft: H_W.width * 0.05,
-          }}>
-          Wear
-        </Text>
+        <Text style={styles.WaAp2}>Wear</Text>
         <View
           style={{
             marginTop: HEIGHT * 0.01,
             marginBottom: HEIGHT * 0.015,
-            marginLeft: H_W.width * 0.05,
-            height: 3,
-            backgroundColor: colors.primary,
-            width: H_W.width * 0.15,
+            ...styles.WaAp3,
           }}
         />
-        <Text
-          style={{
-            marginLeft: H_W.width * 0.05,
-            color: colors.lightGrey3,
-            fontWeight: 'bold',
-            fontSize: 20,
-            fontStyle: 'italic',
-          }}>
-          Explore your true style
-        </Text>
+        <Text style={styles.WaAp4}>Explore your true style</Text>
         <View
           style={{
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            justifyContent: 'space-evenly',
-            flexWrap: 'wrap',
+            ...styles.WaAp5,
             marginTop: HEIGHT * 0.04,
           }}>
           {Products.length > 0 &&
@@ -117,3 +92,32 @@ export const WaAP = props => {
 const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, {WasetCurrentProductAction})(WaAP);
+
+const styles = StyleSheet.create({
+  WaAp1: {fontWeight: 'bold', fontSize: 32, paddingLeft: H_W.width * 0.05},
+  WaAp2: {
+    fontWeight: 'bold',
+    fontSize: 32,
+    paddingLeft: H_W.width * 0.05,
+  },
+  WaAp3: {
+    marginLeft: H_W.width * 0.05,
+    height: 3,
+    backgroundColor: colors.primary,
+    width: H_W.width * 0.15,
+  },
+  WaAp4: {
+    marginLeft: H_W.width * 0.05,
+    color: colors.lightGrey3,
+    fontWeight: 'bold',
+    fontSize: 20,
+    fontStyle: 'italic',
+  },
+  WaAp5: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+  },
+  WaAp6: {},
+});

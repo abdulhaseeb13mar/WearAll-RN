@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {
   ScrollView,
   Text,
@@ -21,35 +21,22 @@ import {
   WaremoveFavAction,
   WasetFavAction,
 } from '../WaRedux/WaActions';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {Avatar, Badge, Button} from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import WaSearchBar from '../WaComp/WaSearchBar';
 import Header from '../WaComp/WaHeader';
 
 function WaHome(props) {
-  useEffect(() => {
-    WaChangeTab(Data.category[0]);
-  }, []);
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
 
   const [WaCategories, setCategories] = useState(Data.category);
-  const [WaCurrentCat, setCurrentCat] = useState(Data.category[0]);
-  const [WaTabProducts, setTabProducts] = useState([]);
 
-  const WaChangeTab = tab => {
-    setCurrentCat(tab);
-    const filteredProducts = Data.product.filter(
-      item => item.categoryId === tab.id,
-    );
-    setTabProducts(filteredProducts);
-  };
-
-  // const WaGotoCart = () => RefNavigation.Navigate('WaCart');
-  // const WaGotoSearch = () => RefNavigation.Navigate('WaSearch');
+  const WaGotoCart = () => RefNavigation.Navigate('WaCart');
+  const WaGotoFav = () => RefNavigation.Navigate('WaFav');
+  const WaGotoSearch = () => RefNavigation.Navigate('WaSearch');
   const WaGoToSingleProduct = item => {
     props.WasetCurrentProductAction(item);
     RefNavigation.Navigate('WaSP');
@@ -64,7 +51,8 @@ function WaHome(props) {
         leftIconColor="black"
         leftIconName="hearto"
         rightIconName="ios-cart-outline"
-        // leftIconAction=
+        leftIconAction={WaGotoFav}
+        rightIconAction={WaGotoCart}
         Title={
           <Text>
             Wear<Text style={{color: 'black'}}>All</Text>
@@ -74,13 +62,12 @@ function WaHome(props) {
       <ScrollView>
         <View
           style={{
-            alignItems: 'center',
-            justifyContent: 'center',
+            ...styles.WaHome1,
             marginVertical: HEIGHT * 0.03,
           }}>
-          <View style={{width: '90%'}}>
+          <TouchableOpacity onPress={WaGotoSearch} style={{width: '90%'}}>
             <WaSearchBar editable={false} />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={{marginBottom: HEIGHT * 0.03}}>
           <Loop
@@ -92,9 +79,7 @@ function WaHome(props) {
         </View>
         <Text
           style={{
-            fontWeight: 'bold',
-            fontSize: 25,
-            marginLeft: H_W.width * 0.05,
+            ...styles.WaHome2,
             marginBottom: HEIGHT * 0.02,
           }}>
           Featured Products
@@ -115,25 +100,14 @@ function WaHome(props) {
   );
 }
 
-export const ProductList = ({item, WaGoToSingleProduct, explore}) => {
+export const ProductList = ({item, WaGoToSingleProduct, explore, isCart}) => {
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
     <TouchableOpacity onPress={() => WaGoToSingleProduct(item)}>
       <View
         style={{
-          width: H_W.width * 0.45,
-          alignItems: 'center',
-          justifyContent: 'center',
-          backgroundColor: 'white',
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 2,
-          },
-          shadowOpacity: 0.25,
-          shadowRadius: 3.84,
-          borderRadius: 16,
+          ...styles.WaHome3,
           marginHorizontal: explore ? 0 : H_W.width * 0.05,
           marginVertical: HEIGHT * 0.01,
         }}>
@@ -145,21 +119,13 @@ export const ProductList = ({item, WaGoToSingleProduct, explore}) => {
         />
         <View
           style={{
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'center',
+            ...styles.WaHome4,
             paddingVertical: HEIGHT * 0.02,
-            backgroundColor: 'white',
-            flex: 1,
-            borderBottomLeftRadius: 16,
-            borderBottomRightRadius: 16,
           }}>
           <Text
             style={{
-              textAlign: 'center',
-              fontWeight: 'bold',
+              ...styles.WaHome5,
               fontSize: explore ? 16 : 18,
-              width: '90%',
             }}>
             {item.productName}
           </Text>
@@ -167,12 +133,19 @@ export const ProductList = ({item, WaGoToSingleProduct, explore}) => {
             style={{
               marginTop: HEIGHT * 0.01,
               marginBottom: HEIGHT * 0.025,
-              height: 3,
-              backgroundColor: colors.primary,
-              width: '20%',
+              ...styles.WaHome6,
             }}
           />
           <Text style={{fontWeight: 'bold', fontSize: 20}}>$ {item.Price}</Text>
+          {isCart && (
+            <Text
+              style={{
+                ...styles.WaHome7,
+                marginTop: HEIGHT * 0.01,
+              }}>
+              {item.size}
+            </Text>
+          )}
         </View>
       </View>
     </TouchableOpacity>
@@ -183,22 +156,7 @@ export const WaTabs = ({item, WaGotoAllProducts}) => {
   const insets = useSafeAreaInsets();
   const HEIGHT = H_W.height - (insets.bottom + insets.top);
   return (
-    <View
-      style={{
-        width: H_W.width * 0.65,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        borderRadius: 16,
-        marginHorizontal: H_W.width * 0.05,
-      }}>
+    <View style={styles.WaHome8}>
       <ImageBackground
         source={item.images}
         style={{width: '100%', height: HEIGHT * 0.3, borderRadius: 16}}
@@ -207,32 +165,18 @@ export const WaTabs = ({item, WaGotoAllProducts}) => {
       />
       <View
         style={{
-          width: '100%',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          ...styles.WaHome9,
           paddingVertical: HEIGHT * 0.03,
-          backgroundColor: colors.primary,
-          flex: 1,
-          borderBottomLeftRadius: 16,
-          borderBottomRightRadius: 16,
         }}>
         <View style={{alignItems: 'center'}}>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontWeight: 'bold',
-              fontSize: 23,
-              width: H_W.width * 0.65,
-            }}>
+          <Text style={styles.WaHome10}>
             {item.categoryName}'s Fashion wear
           </Text>
           <View
             style={{
               marginTop: HEIGHT * 0.01,
               marginBottom: HEIGHT * 0.015,
-              height: 2,
-              backgroundColor: 'white',
-              width: H_W.width * 0.15,
+              ...styles.WaHome11,
             }}
           />
         </View>
@@ -241,11 +185,7 @@ export const WaTabs = ({item, WaGotoAllProducts}) => {
           raised
           onPress={() => WaGotoAllProducts(item)}
           titleStyle={{fontWeight: 'bold', color: colors.lightGrey3}}
-          buttonStyle={{
-            borderRadius: 50,
-            backgroundColor: 'white',
-            paddingHorizontal: H_W.width * 0.06,
-          }}
+          buttonStyle={styles.WaHome12}
           containerStyle={{borderRadius: 50}}
           iconRight
           icon={
@@ -261,11 +201,6 @@ export const WaTabs = ({item, WaGotoAllProducts}) => {
   );
 };
 
-const border = {
-  borderWidth: 1,
-  borderColor: 'red',
-};
-
 const styles = StyleSheet.create({
   WaHome21: {},
   WaHome20: {},
@@ -276,43 +211,75 @@ const styles = StyleSheet.create({
   WaHome15: {},
   WaHome14: {},
   WaHome13: {},
-  WaHome12: {},
-  WaHome11: {},
-  WaHome10: {},
-  WaHome9: {},
-  WaHome8: {},
-  WaHome7: {},
-  WaHome6: {},
-  WaHome5: {},
-  WaHome4: {},
-  WaHome3: {},
-  WaHome2: {},
-  WaHome1: {},
-  badgeContainer: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
+  WaHome12: {
+    borderRadius: 50,
+    backgroundColor: 'white',
+    paddingHorizontal: H_W.width * 0.06,
   },
-  tabIndicator: {
+  WaHome11: {height: 2, backgroundColor: 'white', width: H_W.width * 0.15},
+  WaHome10: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 23,
+    width: H_W.width * 0.65,
+  },
+  WaHome9: {
     width: '100%',
-    borderWidth: 1.8,
-    borderRadius: 10,
-    marginTop: 4,
-    backgroundColor: colors.primary,
-  },
-  HomeTabsText: {
-    fontSize: 16,
-    fontWeight: '700',
-  },
-  HomeTabsWrapper: {
-    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    marginHorizontal: H_W.width * 0.05,
-    height: H_W.width * 0.1,
-    paddingHorizontal: H_W.width * 0.02,
-    paddingTop: H_W.width * 0.02,
+    justifyContent: 'space-between',
+    backgroundColor: colors.primary,
+    flex: 1,
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
   },
+  WaHome8: {
+    width: H_W.width * 0.65,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    borderRadius: 16,
+    marginHorizontal: H_W.width * 0.05,
+  },
+  WaHome7: {
+    textAlign: 'right',
+    width: '90%',
+    color: colors.primary,
+    fontWeight: 'bold',
+  },
+  WaHome6: {height: 3, backgroundColor: colors.primary, width: '20%'},
+  WaHome5: {textAlign: 'center', fontWeight: 'bold', width: '90%'},
+  WaHome4: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    flex: 1,
+    borderBottomLeftRadius: 16,
+    borderBottomRightRadius: 16,
+  },
+  WaHome3: {
+    width: H_W.width * 0.45,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    borderRadius: 16,
+  },
+  WaHome2: {fontWeight: 'bold', fontSize: 25, marginLeft: H_W.width * 0.05},
+  WaHome1: {alignItems: 'center', justifyContent: 'center'},
 });
 
 const mapStateToProps = state => {
