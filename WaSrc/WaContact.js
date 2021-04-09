@@ -37,7 +37,11 @@ const ConfirmOrder = props => {
     if (!formValidResponse.status) {
       errorMsgHandler(formValidResponse.errCategory, formValidResponse.errMsg);
     } else {
-      CallApi();
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        NavPointer.Push('WaConfirmOrder');
+      }, 2000);
       props.WaUserAction({
         email: email,
         firstName: firstName,
